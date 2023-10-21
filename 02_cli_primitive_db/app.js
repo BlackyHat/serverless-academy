@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const { getUsers, addUser, getUser } = require('./servicesDB');
 
 const msgs = {
   user: "Enter the user's name. To cancel press Enter:",
@@ -19,27 +20,57 @@ const dialog = [
     name: 'gender',
     message: msgs.gender,
     choices: ['male', 'female'],
+    when(answers) {
+      return answers.user;
+    },
   },
   {
     type: 'input',
     name: 'age',
     message: msgs.age,
+    when(answers) {
+      return answers.user;
+    },
   },
   {
     type: 'confirm',
     name: 'search',
     message: msgs.search,
+    when(answers) {
+      return !answers.user;
+    },
   },
   {
     type: 'input',
     name: 'searchByName',
     message: msgs.searchByName,
+    when: async (answers) => {
+      if (answers.search === 'Yes') {
+        const users = await getUsers();
+        console.log(users);
+        return true;
+      }
+    },
   },
 ];
 
 function main() {
   inquirer.prompt(dialog).then(async (answers) => {
-    console.log(JSON.stringify(answers, null, '  '));
+    if (answers.searchByName) {
+      const userData = await getUser(answers.searchByName);
+      if (userData) {
+        console.log(`User ${answers.searchByName} was found.`);
+        console.log(userData);
+      } else {
+        console.log(`User ${answers.searchByName} was not found.`);
+      }
+    }
+    if (!answers.search) {
+      return;
+    }
+
+    const { user, gender, age } = answers;
+    await addUser({ user, gender, age });
     main();
   });
 }
