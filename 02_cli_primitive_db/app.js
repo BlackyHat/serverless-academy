@@ -45,7 +45,7 @@ const dialog = [
     name: 'searchByName',
     message: msgs.searchByName,
     when: async (answers) => {
-      if (answers.search === 'Yes') {
+      if (answers.search) {
         const users = await getUsers();
         console.log(users);
         return true;
@@ -56,23 +56,28 @@ const dialog = [
 
 function main() {
   inquirer.prompt(dialog).then(async (answers) => {
-    if (answers.searchByName) {
-      const userData = await getUser(answers.searchByName);
-      if (userData) {
-        console.log(`User ${answers.searchByName} was found.`);
-        console.log(userData);
-      } else {
-        console.log(`User ${answers.searchByName} was not found.`);
-      }
+    const { user, gender, age, search, searchByName } = answers;
+
+    if (searchByName) {
+      return await searchUser(searchByName);
     }
-    if (!answers.search) {
+    if (search !== undefined) {
       return;
     }
 
-    const { user, gender, age } = answers;
     await addUser({ user, gender, age });
     main();
   });
+}
+
+async function searchUser(userName) {
+  const result = await getUser(userName);
+  if (result) {
+    console.log(`User ${userName} was found.`);
+    console.log(result);
+  } else {
+    console.log(`User ${userName} was not found.`);
+  }
 }
 
 main();

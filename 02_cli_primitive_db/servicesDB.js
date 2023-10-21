@@ -16,9 +16,10 @@ const getUser = async (userName) => {
   try {
     const users = await getUsers();
 
-    return users.filter(
+    const result = users.filter(
       ({ user }) => user.toLowerCase() === userName.toLowerCase()
     );
+    return result.length > 0 ? result : null;
   } catch (error) {
     console.log(error.message);
     process.exit(0);
