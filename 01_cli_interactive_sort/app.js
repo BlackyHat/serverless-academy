@@ -14,7 +14,7 @@ const rl = readline.createInterface({
 });
 
 const msgs = {
-  hello: 'Hello. Enter 10 words or digits, dividing them in spaces: : ',
+  hello: 'Hello. Enter 10 words or digits, dividing them in spaces: ',
   desc: 'How would you like to sort your values:\n 1. Words by name (from A to Z).\n 2. Show digits from the smallest.\n 3. Show digits from the biggest.\n 4. Words by quantity of letters.\n 5. Show only unique words.\n 6. Show only unique values.\n',
   select: 'Select (1 - 5) and press ENTER: ',
   bye: '\nGoodbye! Come back again!',
