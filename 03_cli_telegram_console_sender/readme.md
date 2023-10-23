@@ -5,8 +5,8 @@
 To run this project, you will need to add the following environment variables to your .env file
 
 ```env
-TELEGRAM_TOKEN=<TELEGRAM_TOKEN>
-CHAT_ID=<CHAT_ID>
+TELEGRAM_BOT_TOKEN=<TELEGRAM_TOKEN>
+TELEGRAM_CHAT_ID=<CHAT_ID>
 ```
 
 # Use CLI
