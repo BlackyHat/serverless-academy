@@ -1,8 +1,10 @@
 const TelegramBot = require('node-telegram-bot-api');
 
-const TOKEN =
-  process.env.TELEGRAM_BOT_TOKEN.trim() || 'YOUR_TELEGRAM_BOT_TOKEN';
-const CHAT_ID = process.env.TELEGRAM_CHAT_ID || 'YOUR_TELEGRAM_BOT_CHAT_ID';
+const TOKEN = process.env.TELEGRAM_TOKEN || 'YOUR_TELEGRAM_BOT_TOKEN';
+console.log('🚀 ~ TOKEN:', TOKEN);
+
+const CHAT_ID = process.env.CHAT_ID || 'YOUR_TELEGRAM_BOT_CHAT_ID';
+console.log('🚀 ~ CHAT_ID:', CHAT_ID);
 
 const bot = new TelegramBot(TOKEN, { polling: true });
 

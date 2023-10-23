@@ -1,5 +1,5 @@
 const { Command } = require('commander');
-
+const { sendMsg, sendPhoto } = require('./telegramServices');
 const program = new Command();
 program.name('app').version('0.1.3');
 
@@ -8,8 +8,9 @@ program
   .alias('m')
   .argument('<message>')
   .description('Send message to Telegram Bot.')
-  .action((message) => {
-    console.log(`print: ${message}`);
+  .action(async (message) => {
+    await sendMsg(message);
+    process.exit(0);
   });
 
 program
@@ -19,9 +20,10 @@ program
   .description(
     'Send photo to Telegram Bot. Just drag and drop it console after p-flag.'
   )
-  .action((photo) => {
-    console.log(`print: ${photo}`);
+  .action(async (photo) => {
+    await sendPhoto(photo);
     console.log('You successfully sent the photo to your bot.');
+    process.exit(0);
   });
 
 program.parse();
