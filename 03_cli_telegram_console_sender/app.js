@@ -4,8 +4,9 @@ const program = new Command();
 program.name('app').version('0.1.3');
 
 program
-  .command('message')
+  .command('send-message')
   .alias('m')
+  .alias('message')
   .argument('<message>')
   .description('Send message to Telegram Bot.')
   .action(async (message) => {
@@ -14,8 +15,9 @@ program
   });
 
 program
-  .command('photo')
+  .command('send-photo')
   .alias('p')
+  .alias('photo')
   .argument('<path>')
   .description(
     'Send photo to Telegram Bot. Just drag and drop it console after p-flag.'
