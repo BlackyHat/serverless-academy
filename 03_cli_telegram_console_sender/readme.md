@@ -8,4 +8,7 @@ TELEGRAM_TOKEN=<TELEGRAM_TOKEN>
 CHAT_ID=<CHAT_ID>
 
 Run it:
+
+```run
 env $(cat .env | xargs) node app.js <command>
+```
