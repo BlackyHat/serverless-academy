@@ -8,12 +8,19 @@ To run this project, you will need to add the following environment variables to
 
 ```env
 TELEGRAM_BOT_TOKEN=<TELEGRAM_TOKEN>
+WEATHER_API_TOKEN=<WEATHER_API_TOKEN>
 ```
 
-# Use CLI
+# Use telegram bot
 
-Run it:
+Run bot:
 
 ```run
 env $(cat .env | xargs) node app.js
 ```
+
+# Live demo
+
+[Open bot in telegram](https://t.me/Maranello_weather_bot)
+
+- start request may take around 30 sec to get responce from server
