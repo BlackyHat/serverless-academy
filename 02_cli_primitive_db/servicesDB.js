@@ -1,4 +1,4 @@
-const { readFile, writeFile, constants } = require('fs/promises');
+const { readFile, writeFile } = require('fs/promises');
 const path = require('path');
 
 const dbPath = path.join('db', 'users.txt');
