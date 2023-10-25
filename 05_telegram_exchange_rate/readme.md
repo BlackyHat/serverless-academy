@@ -15,9 +15,3 @@ Run bot:
 ```run
 env $(cat .env | xargs) node app.js
 ```
-
-# Live demo
-
-[Open bot in telegram](https://t.me/Maranello_weather_bot)
-
-- start request may take around 30 sec to get responce from server
