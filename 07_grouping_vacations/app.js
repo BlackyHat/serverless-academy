@@ -1,4 +1,4 @@
-const { readFile, writeFile } = require('fs/promises');
+const { readFile } = require('fs/promises');
 const path = require('path');
 
 const dataPath = path.join(__dirname, 'data.json');
@@ -40,5 +40,5 @@ const transformUserData = (data) => {
 
 getUserData().then((res) => {
   const newResponce = transformUserData(res);
-  console.log(newResponce[0]);
+  console.log(newResponce);
 });
